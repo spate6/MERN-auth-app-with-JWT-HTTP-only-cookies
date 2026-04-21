@@ -77,7 +77,7 @@ JWT_SECRET=change_this_to_a_long_random_string
 ```bash
 npm run dev
 ```
-- Backend → http://localhost:5000
+- Backend → http://localhost:5001
 - Frontend → http://localhost:3000
 
 The frontend `proxy` in `package.json` forwards `/api/*` calls to the backend automatically.
