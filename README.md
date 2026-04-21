@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MERN Authentication App
 
 Full-stack authentication app built with **MongoDB, Express, React, Node.js** and **JWT via HTTP-only cookies**.
@@ -87,3 +88,6 @@ The frontend `proxy` in `package.json` forwards `/api/*` calls to the backend au
 - JWT is set as an **HTTP-only, SameSite=Strict** cookie
 - In production, set `NODE_ENV=production` so the cookie is also `Secure` (HTTPS only)
 - Change `JWT_SECRET` to a long random string before deploying
+=======
+# PEAN-To-Do-List-Project
+>>>>>>> 2b294d7b6b763d536c614af7ad5ef873bec96733
