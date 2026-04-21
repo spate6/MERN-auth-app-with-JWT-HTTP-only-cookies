@@ -1,19 +1,37 @@
-<<<<<<< HEAD
-# MERN Authentication App
+# MERN Auth App
 
-Full-stack authentication app built with **MongoDB, Express, React, Node.js** and **JWT via HTTP-only cookies**.
+A full-stack authentication app I built using MongoDB, Express, React and Node.js. Auth is handled with JWTs stored in HTTP-only cookies so they're never exposed to JavaScript.
 
-## Features
+## Screenshots
 
-- Register / Login / Logout
-- JWT stored in HTTP-only cookie (not accessible via JavaScript)
-- Protected routes — unauthenticated users redirected to `/login`
-- View & update profile (name, email, bio, password)
-- Global auth state via React Context
-- Toast notifications
-- Responsive dark UI
+**Register**
+![Register](screenshots/register.png)
 
-## Project Structure
+**Login**
+![Login](screenshots/login.png)
+
+**Dashboard**
+![Dashboard](screenshots/dashboard.png)
+
+**Profile**
+![Profile](screenshots/profile.png)
+
+## What it does
+
+- Register / login / logout
+- JWT stored in an HTTP-only cookie (not accessible via JS)
+- Protected routes — if you're not logged in you get redirected to /login
+- Profile page where you can update your name, email, bio or password
+- Global auth state managed with React Context
+
+## Tech stack
+
+- **Frontend** — React, React Router, Context API, react-toastify
+- **Backend** — Node.js, Express, Mongoose
+- **Database** — MongoDB
+- **Auth** — JWT + HTTP-only cookies, bcryptjs for password hashing
+
+## Project structure
 
 ```
 mern-auth/
@@ -24,70 +42,53 @@ mern-auth/
 │   ├── models/         # Mongoose User model
 │   ├── routes/         # Express routes
 │   ├── utils/          # JWT cookie helper
-│   ├── server.js
-│   └── .env.example
+│   └── server.js
 ├── frontend/
 │   └── src/
-│       ├── context/    # AuthContext (global user state)
+│       ├── context/    # AuthContext
 │       ├── hooks/      # useApi fetch wrapper
 │       ├── components/ # Navbar, PrivateRoute
-│       ├── pages/      # Login, Register, Dashboard, Profile
-│       ├── App.jsx
-│       └── index.css
-└── package.json        # root scripts with concurrently
+│       └── pages/      # Login, Register, Dashboard, Profile
+└── package.json
 ```
 
-## API Endpoints
+## API routes
 
-| Method | Route                  | Access  | Description          |
-|--------|------------------------|---------|----------------------|
-| POST   | /api/users/register    | Public  | Register new user    |
-| POST   | /api/users/login       | Public  | Login + set cookie   |
-| POST   | /api/users/logout      | Public  | Clear cookie         |
-| GET    | /api/users/profile     | Private | Get user profile     |
-| PUT    | /api/users/profile     | Private | Update user profile  |
+| Method | Route | Access | Description |
+|--------|-------|--------|-------------|
+| POST | /api/users/register | Public | Register |
+| POST | /api/users/login | Public | Login + set cookie |
+| POST | /api/users/logout | Public | Clear cookie |
+| GET | /api/users/profile | Private | Get profile |
+| PUT | /api/users/profile | Private | Update profile |
 
-## Setup & Run
+## Running it locally
 
-### Prerequisites
-- Node.js v18+
-- MongoDB running locally (`mongod`) **or** a [MongoDB Atlas](https://cloud.mongodb.com) URI
+You'll need Node.js and MongoDB installed.
 
-### 1. Clone / unzip the project
-
-### 2. Install all dependencies
 ```bash
+# install everything
 npm run install-all
-```
 
-### 3. Configure environment
-```bash
+# set up env
 cd backend
 cp .env.example .env
+# fill in your MONGO_URI and JWT_SECRET
 ```
-Edit `.env`:
+
+`.env` example:
 ```
 NODE_ENV=development
-PORT=5000
+PORT=5001
 MONGO_URI=mongodb://localhost:27017/mernauth
-JWT_SECRET=change_this_to_a_long_random_string
+JWT_SECRET=your_secret_here
 ```
 
-### 4. Run both servers (from root)
 ```bash
+# run both servers from root
 npm run dev
 ```
-- Backend → http://localhost:5000
-- Frontend → http://localhost:3000
 
-The frontend `proxy` in `package.json` forwards `/api/*` calls to the backend automatically.
+Frontend runs on http://localhost:3000, backend on http://localhost:5001.
 
-## Security Notes
-
-- Passwords are hashed with **bcryptjs** (salt rounds: 10)
-- JWT is set as an **HTTP-only, SameSite=Strict** cookie
-- In production, set `NODE_ENV=production` so the cookie is also `Secure` (HTTPS only)
-- Change `JWT_SECRET` to a long random string before deploying
-=======
-# PEAN-To-Do-List-Project
->>>>>>> 2b294d7b6b763d536c614af7ad5ef873bec96733
+> Note: port 5000 is taken by macOS Control Center so I'm using 5001 for the backend.
